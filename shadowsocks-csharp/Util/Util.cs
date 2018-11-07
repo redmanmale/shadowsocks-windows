@@ -253,6 +253,7 @@ namespace Shadowsocks.Util
             {
                 if (ndpKey?.GetValue("Release") != null)
                 {
+                    return true;
                     var releaseKey = (int)ndpKey.GetValue("Release");
 
                     if (releaseKey >= minSupportedRelease)
