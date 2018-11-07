@@ -449,7 +449,7 @@ namespace test
             RunGenerateShadowsocksUrlTest(generateUrlCases);
         }
 
-        private static void RunParseShadowsocksUrlTest(string testCase, IReadOnlyList<Server> expected)
+        private static void RunParseShadowsocksUrlTest(string testCase, IList<Server> expected)
         {
             var actual = Server.GetServers(testCase);
             if (actual.Count != expected.Count)
@@ -473,7 +473,7 @@ namespace test
             }
         }
 
-        private static void RunGenerateShadowsocksUrlTest(IReadOnlyDictionary<string, Server> testCases)
+        private static void RunGenerateShadowsocksUrlTest(IDictionary<string, Server> testCases)
         {
             foreach (var testCase in testCases)
             {

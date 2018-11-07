@@ -143,7 +143,7 @@ namespace Shadowsocks.Model
                     Server server = new Server
                     {
                         remarks = parsedUrl.GetComponents(UriComponents.Fragment, UriFormat.Unescaped),
-                        server = parsedUrl.IdnHost,
+                        server = parsedUrl.DnsSafeHost,
                         server_port = parsedUrl.Port,
                     };
 

@@ -62,7 +62,7 @@ namespace Shadowsocks.Controller.Service
                     ErrorDialog = false,
                     WindowStyle = ProcessWindowStyle.Hidden,
                     WorkingDirectory = appPath ?? Environment.CurrentDirectory,
-                    Environment =
+                    EnvironmentVariables =
                     {
                         ["SS_REMOTE_HOST"] = serverAddress,
                         ["SS_REMOTE_PORT"] = serverPort.ToString(),
@@ -91,8 +91,8 @@ namespace Shadowsocks.Controller.Service
                 var localPort = GetNextFreeTcpPort();
                 LocalEndPoint = new IPEndPoint(IPAddress.Loopback, localPort);
 
-                _pluginProcess.StartInfo.Environment["SS_LOCAL_HOST"] = LocalEndPoint.Address.ToString();
-                _pluginProcess.StartInfo.Environment["SS_LOCAL_PORT"] = LocalEndPoint.Port.ToString();
+                _pluginProcess.StartInfo.EnvironmentVariables["SS_LOCAL_HOST"] = LocalEndPoint.Address.ToString();
+                _pluginProcess.StartInfo.EnvironmentVariables["SS_LOCAL_PORT"] = LocalEndPoint.Port.ToString();
                 _pluginProcess.StartInfo.Arguments = ExpandEnvironmentVariables(_pluginProcess.StartInfo.Arguments, _pluginProcess.StartInfo.EnvironmentVariables);
                 _pluginProcess.Start();
                 _pluginJob.AddProcess(_pluginProcess.Handle);
